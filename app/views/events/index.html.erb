@@ -1,0 +1,23 @@
+<ul>
+  <% if user_signed_in? %>
+   
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Mon profil
+        </button>
+      </div>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <div class="dropdown-item"><%= link_to "Mon profil", users_show_path %> </div>
+        <div class="dropdown-item"><%= link_to "Se deconnecter", destroy_user_session_path, method: :delete %> </div>
+      </div>
+  <% else %>
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+     S'inscrire/ Se connecter
+    </button>
+    <div class="dropdown-menu">
+      <div class="dropdown-item" ><%= link_to "Sign in", new_user_session_path %> </div>
+      <div class="dropdown-item" href="/users/sign_in"> <%= link_to "Sign up", new_user_registration_path %> </div>
+    </div>
+
+  <% end %>
+</ul>
