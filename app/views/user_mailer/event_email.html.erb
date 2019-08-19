@@ -1,16 +1,9 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-  </head>
-  <body>
-    <h1>Salut <%= @attendance.event.user.first_name %> !</h1>
-    <p>
-      Tu t'es inscrit à notre prochain événement sur eventbrite.fr qui aura lieu très bientôt
-    </p>
-    <p>
-      Pour voir les détails concernant cette événement, rendez-vous sur le lien : <%= @url %>.
-    </p>
-    <p> Impatient de vous voir là bas !
-  </body>
+ <head>
+   <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+ </head>
+ <body>
+   <p>Bonjour <%= @admin.first_name %>, un participant vient de participer à votre event qui est <%= @participant.first_name %>.</p>
+ </body>
 </html>

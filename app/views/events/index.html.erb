@@ -1,43 +1,16 @@
-  <ul>
-  <% if user_signed_in? %>
-   
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Mon profil
-        </button>
-      </div>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <div class="dropdown-item"><%= link_to "Mon profil", user_path(current_user)%> </div>
-        <div class="dropdown-item"><%= link_to "Se deconnecter", destroy_user_session_path, method: :delete %> </div>
-      </div>
-  <% else %>
-  <div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-     S'inscrire/ Se connecter
-    </button>
-    <div class="dropdown-menu">
-      <div class="dropdown-item" ><%= link_to "Sign in", new_user_session_path %> </div>
-      <div class="dropdown-item" href="/users/sign_in"> <%= link_to "Sign up", new_user_registration_path %> </div>
-    </div>
-
-  <% end %>
-
-  
-  <div class="container">
- <div class="row flex-row">
-   <div class="col d-flex justify-content-center mt-3">
+<div align="center">
      <h2>Here are all the events :</h2>
-   </div>
- </div>
-
+   
  <div class="row">
    <% @event.each do |event| %>
      <div class="text-center col-md-4 mb-5 my-5">
        <h3><%= event.title.capitalize!%></h3>
-       <h4 class="text-center card-subtitle mb-2 text-muted">by <%= User.find(event.user_id).first_name%> </h4>
+       <h4 class="text-center card-subtitle mb-2 text-muted">by <%= User.find(event.admin_id).first_name%> </h4>
        <p class="text-center card-text"><%= event.event_description%></p>
        <p><a href="<%= event_path(event.id)%>" class="btn btn-info">Voir l'event</a></p>
+       
      </div>
-   <%end%>
+   <% end %>
  </div>
 </div>
-</ul>
+

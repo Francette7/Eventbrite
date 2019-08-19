@@ -1,43 +1,41 @@
-<h2> Bienvenu dans Eventbrite, le lieu de rendez-vous de chacun </h2>
-<p> Remplissez les champs suivants pour créer un nouveau événement</p>
+<h2 align="center"> Bienvenu dans Eventbrite, le lieu de rendez-vous de chacun </h2>
+<p align="center"> Remplissez les champs suivants pour créer un nouveau événement</p>
 
-<html>
-  <body>
-    
-    <%= form_tag url_for(action: 'create'), method: "post" do %>
-    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-    
-      <%= label_tag 'Start_date' %>
-      <%= text_field_tag 'start_date'%>
-      <br /> <br />
+   <div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <br><br><br>
+      <%= form_for @event do |f| %>
+        <h1 class="h3 mb-3 font-weight-normal text-center">Créer un évènement</h1>
+        <div class="form-group">
+          <%= f.label :start_date, "Start_date" %><br />
+          <%= f.datetime_select :start_date, autofocus: true, autocomplete: "start_date", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :title, "Titre" %><br />
+          <%= f.text_field :title, autofocus: true, autocomplete: "title", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :duration, "Duration" %><br />
+          <%= f.text_field :duration, autofocus: true, autocomplete: "duration", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :price, "Price" %><br />
+          <%= f.text_field :price, autofocus: true, autocomplete: "price", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :location, "Location" %><br />
+          <%= f.text_field :location, autofocus: true, autocomplete: "location", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :event_description, "Event_description" %><br />
+          <%= f.text_area :event_description, autofocus: true, autocomplete: "event_description", class: "form-control" %>
+        </div>
+        <div class="actions mt-5">
+          <%= f.submit "Créer un événement", class: "btn btn-lg btn-primary btn-block" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
 
-      <%= label_tag 'Duration' %>
-      <%= text_field_tag 'duration' %>
-      <br /> <br />
-
-      <%= label_tag 'Title' %>
-      <%= text_field_tag 'title' %>
-      <br /> <br />
-
-      <%= label_tag 'Price' %>
-      <%= text_field_tag 'price' %>
-      <br /> <br />
-
-      <%= label_tag 'Location' %>
-      <%= text_field_tag 'location' %>
-      <br /> <br />
-
-
-      <%= label_tag 'Event_description' %>
-      <%= text_area_tag 'event_description' %>
-      <br /> <br />
-
-      <%= submit_tag "Créer un événement" %>
-
-    <% end %>
-</input>
-</body>
-
-    <!-- ... -->
-  </body>
-</html>

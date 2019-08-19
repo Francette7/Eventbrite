@@ -1,2 +1,13 @@
-<h1> Les événements que vous avez créer sont : </h1>
-	<% link_to "Créer un événement", event_path %>
+<div class="row flex-row">
+    	<div class="col">
+    		<h2><% @event.title %> </h2>
+    		<ul>
+    			<li><%= @event.event_description %></li>
+    			<li><%= @event.admin.email%></li>
+    			<li><%= @event.start_date%></li>
+    			<li><%= @event.location%></li>
+    			<li><%= @event.price%></li>
+    		</ul>
+    	</div>
+    </div>
+    	<br><%= link_to "Voir les participants", event_path(@event.id),:method => 'get',class:"btn btn-info d-flex justify-content-end"%><br><br>
