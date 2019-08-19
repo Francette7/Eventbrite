@@ -1,0 +1,28 @@
+<h2>Mon profil</h2>
+
+<%= form_for @current_user do |f| %>
+
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description, autofocus: true, autocomplete: "description" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name, autocomplete: "first_name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name %>
+    <%= f.text_field :first_name, autocomplete: "last_name" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+<% end %>
+
+<h3>Cancel my account</h3>
+
+
+<%= link_to "Back", :back %>

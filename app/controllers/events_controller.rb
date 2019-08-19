@@ -11,7 +11,7 @@ before_action :authenticate_user!, except: [:index]
     @event.admin_id = current_user.id
     if @event.save
       flash[:success] = " 😇 Félicitation! vous venez de créer un nouveau Evénement! 👌"
-        redirect_to root_path
+        redirect_to event_path
     else
     flash[:failed] = "🤔 Attention!!! un des champs n'est pas valide. 🤓 Veuillez réessayer svp!"
         render 'new'
