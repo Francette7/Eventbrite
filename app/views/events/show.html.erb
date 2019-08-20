@@ -1,13 +1,32 @@
-<div class="row flex-row">
-    	<div class="col">
-    		<h2><% @event.title %> </h2>
-    		<ul>
-    			<li><%= @event.event_description %></li>
-    			<li><%= @event.admin.email%></li>
-    			<li><%= @event.start_date%></li>
-    			<li><%= @event.location%></li>
-    			<li><%= @event.price%></li>
-    		</ul>
-    	</div>
-    </div>
-    	<br><%= link_to "Voir les participants", event_path(@event.id),:method => 'get',class:"btn btn-info d-flex justify-content-end"%><br><br>
+
+<h3>Avatar actuel</h3>
+<%if @event.avatar.attached?%>
+  <%= image_tag @event.avatar, alt: 'avatar' %>
+<%else%>
+  <p>=== Il n'y a pas encore d'avatar lié à cet événement ===</p>
+<%end%><br>
+
+<h3>Changer d'avatar ?</h3>
+<%= form_tag event_avatars_path(@event), multipart: true do %>
+  <%= file_field_tag :avatar %>
+  <%= submit_tag "mettre à jour" %>
+<% end %>
+
+<h1 align="center"> Event </h1>
+<div align="center">
+    <div class="row flex-row">
+        	<div class="col">
+        		<h2><% @event.title %> </h2>
+        		<ul>
+        			<li><%= @event.event_description %></li>
+        			<li><%= @event.admin.email%></li>
+        			<li><%= @event.start_date%></li>
+        			<li><%= @event.location%></li>
+        			<li><%= @event.price%></li>
+        		</ul>
+        	</div>
+        </div>
+        	<br><%= link_to "Voir les participants",  event_attendance_path(@event.id), :method => 'get',class:"btn btn-info d-flex justify-content-end"%><br>
+
+         <%= link_to "Rejoindre l'événement", new_event_attendance_path(@event.id), :method => 'get', class: "btn btn-info d-flex justify-content-end"%>
+</div>

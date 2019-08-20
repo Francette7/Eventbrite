@@ -20,6 +20,7 @@ before_action :authenticate_user!, except: [:index]
 
   def show
   	@event = Event.find(params[:id])
+    
   end
 
   private

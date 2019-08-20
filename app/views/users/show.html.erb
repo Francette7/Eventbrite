@@ -1,3 +1,17 @@
+
+<h3>Profil actuel</h3>
+<%if @user.profil.attached?%>
+  <%= image_tag @user.profil, alt: 'profil' %>
+<%else%>
+  <p>=== Il n'y a pas encore d'profil lié à cet utilisateur ===</p>
+<%end%><br><br>
+
+<h3>Changer de profil ?</h3>
+<%= form_tag user_profils_path(@user), multipart: true do %>
+  <%= file_field_tag :profil %>
+  <%= submit_tag "mettre à jour" %>
+<% end %>
+
 <div class="container">
  <div class="row">
    <div class="col text-center">
@@ -28,9 +42,10 @@
          <%end%>
        <%end%>
      </div>
-     <br><%= link_to "Edit mon compte", edit_user_registration_path(current_user), :method => 'get', class: "btn btn-info d-flex justify-content-end"%><br><br>
+     <br><%= link_to "Edit mon compte", edit_user_registration_path(current_user), :method => 'get', class: "btn btn-info d-flex justify-content-end"%><br>
 
-     <br><%= link_to "Edit mon profil", edit_user_path(current_user), :method => 'get', class: "btn btn-info d-flex justify-content-end"%><br><br>
+     <br><%= link_to "Edit mon profil", edit_user_path(current_user), :method => 'get', class: "btn btn-info d-flex justify-content-end"%><br>
+
    </div>
  </div>
 </div>
